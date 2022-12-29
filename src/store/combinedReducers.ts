@@ -31,6 +31,7 @@ import { photoViewCarouselReducer } from 'Containers/PhotoViewCarousel/reducer';
 import { dropZoneReducer } from 'Containers/DropZone/reducer';
 import { dashboardReducer } from 'Containers/Dashboard/reducer';
 import { employeesReducer } from 'Containers/People/PeopleTabs/EmployeesTab/reducer';
+import { templatesReducer } from 'Containers/Forms/FormsTabs/TemplatesTabs/reducer';
 import { employeeInviteReducer } from 'Containers/InviteEmployees/reducer';
 import { contactsReducer } from 'Containers/People/PeopleTabs/ContactsTab/reducer';
 import { RocketScanReducer } from 'Containers/RocketScan/reducer';
@@ -89,6 +90,7 @@ export default combineReducers({
   dropzone: dropZoneReducer,
   dashboard: dashboardReducer,
   employees: employeesReducer,
+  templates: templatesReducer,
   employeeInvite: employeeInviteReducer,
   contacts: contactsReducer,
   rocketScan: RocketScanReducer,

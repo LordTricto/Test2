@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
-import { areEqual } from 'Utils/equalityChecks';
 
-import { TextBox } from 'Components/TextBox';
-import { Icon } from 'Components/Icons';
 import { ClearButton } from 'Components/Button';
+import { Icon } from 'Components/Icons';
+import { TextBox } from 'Components/TextBox';
+import { areEqual } from 'Utils/equalityChecks';
 import classes from './searchBox.module.css';
 
 interface Props {
@@ -18,7 +18,7 @@ interface Props {
 
 const SearchBox = React.forwardRef(
   ({ id, name, ariaLabel, placeholder, value, onChangeValue, onClickClearButton }: Props, textBoxRef: any) => (
-    <div className={`${classes.searchBoxBase} ${value.length > 0 ? classes.purpleBorder : ''}`}>
+    <div className={`${classes.searchBoxBase} ${value && value.length > 0 ? classes.purpleBorder : ''}`}>
       <Icon type="search" />
       <TextBox
         ref={textBoxRef}
@@ -30,7 +30,7 @@ const SearchBox = React.forwardRef(
         ariaLabel={ariaLabel}
         placeholder={placeholder}
       />
-      <div className={`${classes.clearButton} ${value.length > 0 ? 'd-block' : 'd-none'}`}>
+      <div className={`${classes.clearButton} ${value && value.length > 0 ? 'd-block' : 'd-none'}`}>
         <ClearButton onClick={onClickClearButton} />
       </div>
     </div>

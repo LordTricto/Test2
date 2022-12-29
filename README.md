@@ -1,4 +1,4 @@
-# Web App
+ # Web App
 
 Boilerplate Webpack 5, React and Bootstrap 5 project with global Css and Css modules enabled.
 

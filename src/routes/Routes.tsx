@@ -1,58 +1,51 @@
-import React from 'react';
-
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
-import queryString from 'query-string';
-
-// layout wrappers and dashboard container
-import { Dashboard, DashboardWrapper } from 'Containers/Dashboard';
-import { GuestWrapper } from 'Containers/Auth';
-import { PhotoViewWrapper } from 'Containers/PhotoView/PhotoViewWrapper';
-import { SplashPageWrapper } from 'Containers/SplashPageWrapper';
-
-import { PhotoShare, PhotoShareGallery, PhotoShareWrapper } from 'Containers/Public';
-
-import { NotFoundWrapper } from 'Containers/NotFoundWrapper';
+import { About, Account } from 'Containers/User';
 // guest components
 import {
-  SignInHow,
-  SignInEmail,
-  SignUpEmail,
+  Blocked,
   ForgotPassword,
   ForgotPasswordEmailSent,
-  ResetPassword,
+  NoCompany,
   PhoneVerification,
   PhoneVerificationCode,
+  ResetPassword,
+  SelectAccountType,
+  SignInEmail,
+  SignInHow,
+  SignUpEmail,
   SignUpUserInformation,
   WelcomeAboard,
-  NoCompany,
-  SelectAccountType,
-  Blocked,
 } from 'Containers/SignIn';
-
-import { PhotoView } from 'Containers/PhotoView';
-import { PhotoView as NewPhotoView, RocketScan, MultiUnit, MultiUnitRooms } from 'Containers/RocketScan';
-import { PhotoShareSplashView } from 'Containers/Public/PhotoShare/PhotoShareSplashView';
-
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // dashboard components
 import { CreateProjectMain, Projects } from 'Containers/Projects';
-import { People } from 'Containers/People';
+// layout wrappers and dashboard container
+import { Dashboard, DashboardWrapper } from 'Containers/Dashboard';
+import { DryingReport, PhotoReport, ReportsAndDocuments } from 'Containers/ReportsAndDocuments';
+import { MultiUnit, MultiUnitRooms, PhotoView as NewPhotoView, RocketScan } from 'Containers/RocketScan';
+import { PhotoShare, PhotoShareGallery, PhotoShareWrapper } from 'Containers/Public';
+
 import { Crew } from 'Containers/Crew';
-import { Project } from 'Containers/Project';
-import { Account, About } from 'Containers/User';
-import { ProjectData } from 'Containers/ProjectData';
-import { RocketDry } from 'Containers/RocketDry';
-
-// route components
-import { PhotoShareProvider } from 'Context/PhotoShare/PhotoShareProvider';
-
-import { ProjectsProvider } from 'Context/Projects';
-import { SingleProjectProvider } from 'Context/Project';
+import { Forms } from 'Containers/Forms';
+import { GuestWrapper } from 'Containers/Auth';
+import { NotFoundWrapper } from 'Containers/NotFoundWrapper';
 import { Notes } from 'Containers/Notes';
 import { NotesProvider } from 'Context/Notes';
-import { PhotoReport, DryingReport, ReportsAndDocuments } from 'Containers/ReportsAndDocuments';
-import { PrivateRoute } from './PrivateRoutes';
+import { People } from 'Containers/People';
+// route components
+import { PhotoShareProvider } from 'Context/PhotoShare/PhotoShareProvider';
+import { PhotoShareSplashView } from 'Containers/Public/PhotoShare/PhotoShareSplashView';
+import { PhotoView } from 'Containers/PhotoView';
+import { PhotoViewWrapper } from 'Containers/PhotoView/PhotoViewWrapper';
+import { Project } from 'Containers/Project';
+import { ProjectData } from 'Containers/ProjectData';
+import { ProjectsProvider } from 'Context/Projects';
+import React from 'react';
+import { RocketDry } from 'Containers/RocketDry';
+import { SingleProjectProvider } from 'Context/Project';
+import { SplashPageWrapper } from 'Containers/SplashPageWrapper';
+import queryString from 'query-string';
 import { PublicRoute } from './PublicRoutes';
+import { PrivateRoute } from './PrivateRoutes';
 
 // Render Props.  Create here to prevent a rerender, on a route change, due to arrow functions always being considered new
 const signInHowRoute = () => (
@@ -172,6 +165,13 @@ const CreateProjectRoute = () => (
 const EditAddressRoute = () => (
   <DashboardWrapper>
     <CreateProjectMain />
+  </DashboardWrapper>
+);
+
+// form related routes
+const FormsRoute = () => (
+  <DashboardWrapper>
+    <Forms />
   </DashboardWrapper>
 );
 
@@ -332,6 +332,7 @@ export const Routes = () => (
       <PrivateRoute exact path="/projects/create" render={CreateProjectRoute} />
       <PrivateRoute exact path="/projects/editAddress" render={EditAddressRoute} />
       <PrivateRoute exact path="/projects" render={ProjectsRoute} />
+      <PrivateRoute exact path="/form" render={FormsRoute} />
       <PrivateRoute exact path="/projects/projectDashboard" render={ProjectRoute} />
       <PrivateRoute exact path="/projects/photoManagement/addLocations" render={ProjectPhotoManagementRoute} />
       <PrivateRoute exact path="/projects/photoManagement/allLocations" render={ProjectPhotoManagementRoute} />
